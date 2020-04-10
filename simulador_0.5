@@ -1,0 +1,55 @@
+import random
+caba=("Horse1","Horse2")
+mov=[0,0]
+c=0
+for i in range(1,8):
+    if i==1:
+        print ("#Inicio")
+    elif i==4:
+        print ("#Momento intermedio")
+    elif i==7:
+        print ("#Final")
+    else:
+        print('|',end="")
+        for j in range(mov[c]):
+            print('-',end='')
+        print(caba[c],end="")
+        for j in range(30-mov[c]):
+            print('-',end='')
+        print("|race")
+        mov[c]=mov[c]+random.randint(5,20)
+        if c==0:
+            c=1
+        else:
+            c=0
+if mov[0]==mov[1]:
+    l=random.randint(0,1)
+    mov[l]=mov[l]+2
+if mov[0]>mov[1]:
+    mov[1]=random.randint((mov[1]+1),29)
+    print('|',end="")
+    for j in range(30):
+        print('-',end='')
+    print(caba[0],end="")
+    print("|winer")
+    print('|',end="")
+    for j in range(mov[1]):
+        print('-',end='')
+    print(caba[1],end="")
+    for j in range(30-mov[1]):
+        print('-',end='')
+    print("|loser")
+elif mov[0]<mov[1]:
+    mov[0]=random.randint((mov[0]+1),29)
+    print('|',end="")
+    for j in range(mov[0]):
+        print('-',end='')
+    print(caba[0],end="")
+    for j in range(30-mov[0]):
+        print('-',end='')
+    print("|loser")
+    print('|',end="")
+    for j in range(30):
+        print('-',end='')
+    print(caba[1],end="")
+    print("|winer")
